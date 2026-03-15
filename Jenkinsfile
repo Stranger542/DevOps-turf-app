@@ -1,25 +1,45 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_HUB_USER = 'sumit2023bcd0026' 
+        REG_NUMBER = '2023BCD0026'
+        ROLL_NUMBER = '2023BCD0026'
+        IMAGE_NAME = "${DOCKER_HUB_USER}/${REG_NUMBER}_${ROLL_NUMBER}"
+        DOCKER_CREDS = credentials('dockerhub-credentials')
+    }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') { 
             steps {
-                echo 'Checking out code from GitHub...'
                 checkout scm
             }
         }
-        stage('Lint/Test') {
+        
+        stage('Build Docker Image') {
             steps {
-                echo 'Running basic checks...'
-                // For a simple HTML site, we just check if files exist
-                sh 'ls -la'
+                script {
+                    echo "Building Docker Image: ${IMAGE_NAME}"
+                    // Builds the image locally
+                    sh "docker build -t ${IMAGE_NAME} ." 
+                }
             }
         }
-        stage('Build/Archive') {
+        
+        stage('Push to Docker Hub') { 
             steps {
-                echo 'Archiving build artifacts...'
-                archiveArtifacts artifacts: '*.html, *.css, *.js', fingerprint: true
+                script {
+                    sh "echo ${DOCKER_CREDS_PSW} | docker login -u ${DOCKER_CREDS_USR} --password-stdin"
+                    echo "Pushing Image to Docker Hub..."
+                    sh "docker push ${IMAGE_NAME}"
+                }
             }
+        }
+    }
+    
+    post {
+        always {
+            sh "docker rmi ${IMAGE_NAME} || true"
+            sh "docker logout"
         }
     }
 }

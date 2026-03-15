@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenField Turf Booking</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-green: #2e7d32;
+            --hover-green: #1b5e20;
+            --bg-light: #f4f9f5;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #7f8c8d;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        /* Required Student Details Section */
+        .student-badge {
+            background: var(--primary-green);
+            color: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .student-badge h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .student-info p {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Booking Application Container */
+        .app-container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 600px;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .app-header {
+            margin-bottom: 2rem;
+        }
+
+        .app-header h1 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-header p {
+            color: var(--text-muted);
+        }
+
+        /* Form Styling */
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input, 
+        .form-group select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        /* Button Styling */
+        .btn-submit {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--hover-green);
+        }
+
+        .btn-submit:active {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="student-badge">
+        <h2>Jenkins Bomb Blast</h2>
+        <div class="student-info">
+            <p><strong>Name:</strong> Sumit Hulke</p>
+            <p><strong>Roll Number:</strong> 2023BCD0026</p>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <div class="app-header">
+            <h1>⚽ GreenField Turf</h1>
+            <p>Reserve your premium 5-a-side pitch instantly</p>
+        </div>
+        
+        <form class="booking-form" action="#" method="get">
+            <div class="form-group">
+                <label for="date">Select Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="time">Select Time Slot</label>
+                <select id="time" name="time" required>
+                    <option value="" disabled selected>Choose a slot...</option>
+                    <option value="17:00">05:00 PM - 06:00 PM</option>
+                    <option value="18:00">06:00 PM - 07:00 PM</option>
+                    <option value="19:00">07:00 PM - 08:00 PM</option>
+                    <option value="20:00">08:00 PM - 09:00 PM</option>
+                </select>
+            </div>
+            
+            <button class="btn-submit" type="button" onclick="alert('Booking confirmed!')">
+                Confirm Booking
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
