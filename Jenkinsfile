@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         DOCKER_HUB_USER = 'sumit2023bcd0026' 
-        REG_NUMBER = '2023BCD0026'
-        ROLL_NUMBER = '2023BCD0026'
+        REG_NUMBER = '2023bcd0026'
+        ROLL_NUMBER = '26'
         IMAGE_NAME = "${DOCKER_HUB_USER}/${REG_NUMBER}_${ROLL_NUMBER}"
         DOCKER_CREDS = credentials('dockerhub-credentials')
     }
